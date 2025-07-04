@@ -1,0 +1,25 @@
+{
+  "name": "barrierefrei-frontend-demo",
+  "version": "1.0.0",
+  "description": "Ein Demo-Projekt für barrierefreies Frontend-Design mit Sass und Gulp",
+  "main": "gulpfile.js",
+  "scripts": {
+    "dev": "gulp watch",
+    "build": "gulp build",
+    "serve": "gulp serve"
+  },
+  "keywords": ["accessibility", "a11y", "sass", "gulp", "frontend", "html5", "css3"],
+  "author": "Frontend Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.69.5",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-rename": "^2.0.0",
+    "browser-sync": "^2.29.3",
+    "gulp-sourcemaps": "^3.0.0"
+  }
+} 

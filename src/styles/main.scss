@@ -1,0 +1,318 @@
+@import 'variables';
+
+// === Reset & Base Styles ===
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $color-text;
+  background-color: $color-background;
+}
+
+// Fokus-Styles für Accessibility
+*:focus {
+  outline: $focus-ring-width solid $color-focus;
+  outline-offset: $focus-ring-offset;
+}
+
+// Skip-Link für Screenreader
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: $color-primary;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: $border-radius;
+  z-index: 1000;
+  
+  &:focus {
+    top: 6px;
+  }
+}
+
+// === Layout Components (BEM) ===
+
+// Header
+.header {
+  background-color: $color-background-light;
+  border-bottom: $border-width solid $color-border;
+  padding: $spacing-md 0;
+  
+  &__container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+  }
+  
+  &__title {
+    font-size: $font-size-2xl;
+    color: $color-primary;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+// Navigation
+.nav {
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+  }
+  
+  &__item {
+    // Basis-Item-Styles
+  }
+  
+  &__link {
+    color: $color-text;
+    text-decoration: none;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius;
+    transition: background-color 0.2s ease;
+    
+    &:hover,
+    &:focus {
+      background-color: $color-primary;
+      color: white;
+      text-decoration: underline;
+    }
+    
+    &--active {
+      background-color: $color-primary-dark;
+      color: white;
+    }
+  }
+}
+
+// Main Content
+.main {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-2xl $spacing-md;
+  
+  &__title {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-lg;
+    color: $color-text;
+  }
+  
+  &__subtitle {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-md;
+    color: $color-text;
+  }
+  
+  &__text {
+    margin-bottom: $spacing-lg;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// Form Component
+.form {
+  background-color: $color-background-light;
+  padding: $spacing-xl;
+  border-radius: $border-radius;
+  border: $border-width solid $color-border;
+  max-width: 600px;
+  
+  &__title {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-lg;
+    color: $color-text;
+  }
+  
+  &__group {
+    margin-bottom: $spacing-lg;
+  }
+  
+  &__label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+    color: $color-text;
+    
+    &--required::after {
+      content: ' *';
+      color: $color-error;
+    }
+  }
+  
+  &__input {
+    width: 100%;
+    padding: $spacing-md;
+    border: $border-width solid $color-border;
+    border-radius: $border-radius;
+    font-size: $font-size-base;
+    line-height: $line-height-normal;
+    transition: border-color 0.2s ease;
+    
+    &:focus {
+      border-color: $color-focus;
+    }
+    
+    &--error {
+      border-color: $color-error;
+      background-color: #fef2f2;
+    }
+    
+    &--success {
+      border-color: $color-secondary;
+      background-color: #f0fdf4;
+    }
+  }
+  
+  &__textarea {
+    @extend .form__input;
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__help {
+    color: $color-text-light;
+    font-size: $font-size-sm;
+    margin-top: $spacing-xs;
+    display: block;
+  }
+  
+  &__error {
+    color: $color-error;
+    font-size: $font-size-sm;
+    margin-top: $spacing-xs;
+    display: block;
+    
+    &--hidden {
+      display: none;
+    }
+  }
+  
+  &__success {
+    color: $color-secondary;
+    font-size: $font-size-sm;
+    margin-top: $spacing-xs;
+    display: block;
+    
+    &--hidden {
+      display: none;
+    }
+  }
+}
+
+// Button Component
+.btn {
+  display: inline-block;
+  padding: $spacing-md $spacing-xl;
+  border: none;
+  border-radius: $border-radius;
+  font-size: $font-size-base;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: $spacing-md;
+  
+  &:focus {
+    outline: $focus-ring-width solid $color-focus;
+    outline-offset: $focus-ring-offset;
+  }
+  
+  &--primary {
+    background-color: $color-primary;
+    color: white;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-primary-dark;
+    }
+  }
+  
+  &--secondary {
+    background-color: transparent;
+    color: $color-primary;
+    border: $border-width solid $color-primary;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-primary;
+      color: white;
+    }
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Alert Component für Feedback
+.alert {
+  padding: $spacing-md;
+  border-radius: $border-radius;
+  margin-bottom: $spacing-md;
+  border: $border-width solid;
+  
+  &--success {
+    background-color: #f0fdf4;
+    border-color: $color-secondary;
+    color: #065f46;
+  }
+  
+  &--error {
+    background-color: #fef2f2;
+    border-color: $color-error;
+    color: #991b1b;
+  }
+  
+  &--hidden {
+    display: none;
+  }
+}
+
+// Footer Component
+.footer {
+  background-color: $color-background-light;
+  border-top: $border-width solid $color-border;
+  padding: $spacing-xl 0;
+  margin-top: $spacing-2xl;
+  text-align: center;
+  
+  &__container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    color: $color-text-light;
+    font-size: $font-size-sm;
+  }
+}
+
+// === Responsive Design ===
+@media (max-width: $bp-md) {
+  .header__title {
+    font-size: $font-size-xl;
+  }
+  
+  .main__title {
+    font-size: $font-size-2xl;
+  }
+  
+  .nav__list {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+  
+  .form {
+    padding: $spacing-lg;
+  }
+  
+  .btn {
+    margin-bottom: $spacing-sm;
+    margin-right: 0;
+  }
+} 

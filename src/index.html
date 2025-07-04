@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Demo-Projekt für barrierefreies Frontend-Design mit modernen Web-Technologien">
+    <title>Barrierefreies Frontend Demo</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <!-- Skip-Link für bessere Accessibility -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+    
+    <!-- Header mit semantischer Navigation -->
+    <header class="header" role="banner">
+        <div class="header__container">
+            <h1 class="header__title">Barrierefreies Frontend Demo</h1>
+            
+            <nav class="nav" role="navigation" aria-label="Hauptnavigation">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="#main-content" class="nav__link nav__link--active" aria-current="page">
+                            Start
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#about" class="nav__link">
+                            Über das Projekt
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#contact" class="nav__link">
+                            Kontakt
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#accessibility" class="nav__link">
+                            Barrierefreiheit
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main id="main-content" class="main" role="main">
+        <!-- Einführungsbereich -->
+        <section aria-labelledby="intro-title">
+            <h1 id="intro-title" class="main__title">
+                Willkommen zum Barrierefreien Frontend Demo
+            </h1>
+            
+            <p class="main__text">
+                Dieses Projekt demonstriert moderne Frontend-Entwicklung mit Fokus auf 
+                <strong>Barrierefreiheit</strong>, <strong>Sass</strong> und <strong>Gulp</strong>. 
+                Es zeigt, wie semantisches HTML, zugängliches CSS und JavaScript harmonisch zusammenarbeiten.
+            </p>
+        </section>
+
+        <!-- Über das Projekt -->
+        <section id="about" aria-labelledby="about-title">
+            <h2 id="about-title" class="main__subtitle">
+                Über das Projekt
+            </h2>
+            
+            <p class="main__text">
+                Diese Anwendung wurde entwickelt, um Best Practices für barrierefreie Webentwicklung zu zeigen:
+            </p>
+            
+            <ul class="main__text">
+                <li><strong>Semantisches HTML5:</strong> Verwendung korrekter HTML-Elemente für bessere Struktur</li>
+                <li><strong>WCAG 2.1 AA:</strong> Einhaltung der Richtlinien für Web-Accessibility</li>
+                <li><strong>Tastaturnavigation:</strong> Vollständig mit der Tastatur bedienbar</li>
+                <li><strong>Responsive Design:</strong> Funktioniert auf allen Geräten</li>
+                <li><strong>Sass & BEM:</strong> Wartbarer und strukturierter CSS-Code</li>
+            </ul>
+        </section>
+
+        <!-- Kontaktformular -->
+        <section id="contact" aria-labelledby="contact-title">
+            <form class="form" novalidate aria-labelledby="contact-title">
+                <h2 id="contact-title" class="form__title">
+                    Kontaktformular
+                </h2>
+                
+                <!-- Erfolgs-/Fehlermeldungen -->
+                <div id="form-success" class="alert alert--success alert--hidden" role="alert" aria-live="polite">
+                    <strong>Erfolgreich!</strong> Ihre Nachricht wurde gesendet.
+                </div>
+                
+                <div id="form-error" class="alert alert--error alert--hidden" role="alert" aria-live="polite">
+                    <strong>Fehler!</strong> Bitte überprüfen Sie Ihre Eingaben.
+                </div>
+
+                <!-- Name Feld -->
+                <div class="form__group">
+                    <label for="name" class="form__label form__label--required">
+                        Vollständiger Name
+                    </label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        class="form__input"
+                        required
+                        aria-describedby="name-error"
+                        autocomplete="name"
+                    >
+                    <span id="name-error" class="form__error form__error--hidden" role="alert">
+                        Bitte geben Sie Ihren Namen ein.
+                    </span>
+                </div>
+
+                <!-- E-Mail Feld -->
+                <div class="form__group">
+                    <label for="email" class="form__label form__label--required">
+                        E-Mail-Adresse
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form__input"
+                        required
+                        aria-describedby="email-error email-help"
+                        autocomplete="email"
+                    >
+                    <div id="email-help" class="form__help">
+                        Wir verwenden Ihre E-Mail nur für die Antwort auf Ihre Anfrage.
+                    </div>
+                    <span id="email-error" class="form__error form__error--hidden" role="alert">
+                        Bitte geben Sie eine gültige E-Mail-Adresse ein.
+                    </span>
+                </div>
+
+                <!-- Betreff Feld -->
+                <div class="form__group">
+                    <label for="subject" class="form__label form__label--required">
+                        Betreff
+                    </label>
+                    <input 
+                        type="text" 
+                        id="subject" 
+                        name="subject" 
+                        class="form__input"
+                        required
+                        aria-describedby="subject-error"
+                    >
+                    <span id="subject-error" class="form__error form__error--hidden" role="alert">
+                        Bitte geben Sie einen Betreff ein.
+                    </span>
+                </div>
+
+                <!-- Nachricht Feld -->
+                <div class="form__group">
+                    <label for="message" class="form__label form__label--required">
+                        Ihre Nachricht
+                    </label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        class="form__textarea"
+                        required
+                        aria-describedby="message-error message-help"
+                        rows="5"
+                    ></textarea>
+                    <div id="message-help" class="form__help">
+                        Mindestens 10 Zeichen erforderlich.
+                    </div>
+                    <span id="message-error" class="form__error form__error--hidden" role="alert">
+                        Bitte geben Sie Ihre Nachricht ein (mindestens 10 Zeichen).
+                    </span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form__group">
+                    <button type="submit" class="btn btn--primary">
+                        Nachricht senden
+                    </button>
+                    <button type="reset" class="btn btn--secondary">
+                        Formular zurücksetzen
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Accessibility Information -->
+        <section id="accessibility" aria-labelledby="accessibility-title">
+            <h2 id="accessibility-title" class="main__subtitle">
+                Barrierefreiheits-Features
+            </h2>
+            
+            <div class="main__text">
+                <h3>Tastaturnavigation:</h3>
+                <ul>
+                    <li><kbd>Tab</kbd> / <kbd>Shift + Tab</kbd>: Zwischen interaktiven Elementen navigieren</li>
+                    <li><kbd>Enter</kbd> / <kbd>Space</kbd>: Buttons und Links aktivieren</li>
+                    <li><kbd>Escape</kbd>: Dialoge schließen (falls vorhanden)</li>
+                </ul>
+                
+                <h3>Screenreader-Unterstützung:</h3>
+                <ul>
+                    <li>Semantische HTML-Struktur mit korrekten Überschriftenhierarchien</li>
+                    <li>ARIA-Labels und -Beschreibungen</li>
+                    <li>Live-Regionen für dynamische Inhalte</li>
+                    <li>Skip-Links für bessere Navigation</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer__container">
+            <p>&copy; 2024 Barrierefreies Frontend Demo. Erstellt als Lernprojekt.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript laden -->
+    <script src="js/main.js"></script>
+</body>
+</html> 
